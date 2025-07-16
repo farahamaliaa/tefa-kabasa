@@ -18,6 +18,7 @@ use App\Imports\TeacherImport;
 use App\Models\Employee;
 use App\Services\TeacherService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TeacherController extends Controller
@@ -134,11 +135,17 @@ class TeacherController extends Controller
 
     public function import(Request $request)
     {
+        DB::beginTransaction();
         try {
-            $file = $request->file('file');
-            Excel::import(new TeacherImport, $file);
+            $import = new TeacherImport;
+            Excel::import($import, $request->file('file'));
+            if (!empty($import->errors)) {
+                return back()->with('error_rows', $import->errors);
+            }
+            DB::commit();
             return to_route('school.employees.index')->with('success', "Berhasil Mengimport Data!");
         } catch (\Throwable $th) {
+            DB::rollBack();
             return redirect()->back()->with('error', 'Terjadi kesalahan'.$th->getMessage());
         }
     }

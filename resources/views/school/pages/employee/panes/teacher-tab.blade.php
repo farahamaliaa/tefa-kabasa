@@ -22,6 +22,16 @@
         </div>
     </div>
 
+    @if (session('error_rows'))
+        <div class="alert alert-danger">
+            <strong>Terjadi kesalahan pada baris berikut:</strong>
+            <ul>
+                @foreach (session('error_rows') as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div class="">
         <div class="table-responsive rounded-2 ">

@@ -14,21 +14,33 @@ use Illuminate\Support\Facades\Hash;
 
 class TeacherImport implements ToModel
 {
+    public $errors = [];
+
     public function model(array $row)
-    {
+    {   
         if ($row[0] == 'NAMA' || $row[0] == null || $row[0] == 'Contoh Format (Jangan Dihapus)') {
             return null;
         }
 
+        // dd($row);
         $user = User::where('email', $row[1])->first();
 
-        if (!$user) {
-            $user = User::create([
-                'name' => $row[0] ?? null,
-                'email' => $row[1],
-                'slug' => Str::slug($row[0]),
-                'password' => Hash::make($row[2])
-            ]);
+        if ($user) {
+            if ($user->employee) {
+                return null;
+            }
+        } else {
+            if ($row[2] == null) {
+                $this->errors[] = "NIP kosong untuk {$row['0']}, silahkan isi terlebih dahulu";
+                return null;
+            } else {
+                $user = User::create([
+                    'name' => $row[0] ?? null,
+                    'email' => $row[1],
+                    'slug' => Str::slug($row[0]),
+                    'password' => Hash::make($row[2])
+                ]);
+            }
         }
 
         $user->assignRole(RoleEnum::TEACHER->value);
