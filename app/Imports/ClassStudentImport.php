@@ -28,7 +28,6 @@ class ClassStudentImport implements ToModel, WithHeadingRow, WithEvents
 
     public function model(array $row)
     {
-        // dd($row);
         if ($row['nama'] == 'Contoh Format(Jangan Dihapus)' || $row['nama'] == null) {
             return null;
         }
@@ -40,7 +39,9 @@ class ClassStudentImport implements ToModel, WithHeadingRow, WithEvents
             $user = User::where('email', $row['email'])->first();
 
             if ($user) {
-                return null;
+                if ($user->student) {
+                    return null;
+                }
             } else {
                 $user = User::create([
                     'name' => $row['nama'] ?? null,
@@ -52,7 +53,7 @@ class ClassStudentImport implements ToModel, WithHeadingRow, WithEvents
 
             $studentId = "";
             $user->assignRole(RoleEnum::STUDENT->value);
-            $birthDate = $row['tanggal_lahir'] ? Carbon::createFromFormat('d/m/Y', $row['tanggal_lahir'])->format('Y-m-d') : null;
+            $birthDate = Carbon::instance(Date::excelToDateTimeObject($row['tanggal_lahir']))->format('Y-m-d');
 
             $data = [
                 'user_id' => $user->id,

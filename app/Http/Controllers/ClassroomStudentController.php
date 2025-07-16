@@ -13,6 +13,7 @@ use App\Http\Resources\ClassroomStudentResource;
 use App\Imports\ClassStudentImport;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -146,15 +147,18 @@ class ClassroomStudentController extends Controller
     {
         $file = $request->file('file');
 
-        // try {
+        DB::beginTransaction();
+        try {
             Excel::import(new ClassStudentImport, $file);
+            DB::commit();
             return to_route('school.students.index')->with('success', "Berhasil Mengimport Data!");
-        // } catch (\Throwable $th) {
-        //     if ($file->getClientOriginalExtension() != 'xlsx') {
-        //         return redirect()->back()->with('error', 'Format file salah');
-        //     } else {
-        //         return redirect()->back()->with('error', 'Terjadi kesalahan'.$th->getMessage());
-        //     }
-        // }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            if ($file->getClientOriginalExtension() != 'xlsx') {
+                return redirect()->back()->with('error', 'Format file salah');
+            } else {
+                return redirect()->back()->with('error', 'Terjadi kesalahan'.$th->getMessage());
+            }
+        }
     }
 }
