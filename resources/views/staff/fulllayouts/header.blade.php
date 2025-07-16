@@ -31,7 +31,7 @@
                         aria-labelledby="drop1">
                         <div class="profile-dropdown position-relative d-flex flex-column align-items-end p-3">
                             <div class="mb-5">
-                                <img src="{{ asset('assets/images/logo/logo-miscool.png') }}" alt=""
+                                <img src="{{ asset('landing_assets/images/logo/kabasa.png') }}" alt=""
                                     style="width: 150px; height: auto;">
                             </div>
                             <a href="/employee" type="button">
@@ -63,7 +63,7 @@
             aria-labelledby="drop1">
             <div class="profile-dropdown position-relative d-flex flex-column align-items-end p-3">
                 <div class="mb-5">
-                    <img src="{{ asset('assets/images/logo/logo-miscool.png') }}" alt=""
+                    <img src="{{ asset('landing_assets/images/logo/kabasa.png') }}" alt=""
                         style="width: 150px; height: auto;">
                 </div>
                 <a href="/employee" type="button">

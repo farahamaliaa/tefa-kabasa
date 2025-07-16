@@ -29,7 +29,7 @@ class SendEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Pesan Untuk Hummatech.com Dan Mischool.com',
+            subject: 'Pesan Untuk Hummatech.com Dan Kabasa.com',
         );
     }
 

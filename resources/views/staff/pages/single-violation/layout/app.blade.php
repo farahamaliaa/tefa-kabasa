@@ -3,7 +3,7 @@
 
 <head>
     <!--  Title -->
-    <title>MiSchool | Staff</title>
+    <title>Kabasa | Staff</title>
     <!--  Required Meta Tag -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,7 +29,7 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('assets/images/logo/logo-M.png') }}" style="width:100px" alt="loader" class="lds-ripple" />
+        <img src="{{ asset('landing_assets/images/logo/smkn-babussalam.png') }}" style="width:100px" alt="loader" class="lds-ripple" />
     </div>
 
     <!-- Header -->

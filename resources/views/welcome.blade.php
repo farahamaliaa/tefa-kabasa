@@ -161,8 +161,8 @@
         <div class="container">
             <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
                 <h2>Fitur - Fitur </h2>
-                <p>Mischool dilengkapi dengan fitur - fitur penting untuk management sekolah, dibawah ini adalah fitur -
-                    fitur dari Mischool</p>
+                <p>Kabasa dilengkapi dengan fitur - fitur penting untuk management sekolah, dibawah ini adalah fitur -
+                    fitur dari Kabasa</p>
             </div>
             <div class="container mt-5">
                 <div class="row">
@@ -248,8 +248,8 @@
                 <div class="col-md-6 d-flex align-items-center ms-3">
                     <div class="analyze_text" data-aos="fade-in" data-aos-duration="2000" data-aos-delay="100">
                         <div class="section_title align-center">
-                            <h2>Tentang Mischool</h2>
-                            <p>Mischool adalah website manajemen sekolah yang dirancang untuk memudahkan pengelolaan
+                            <h2>Tentang Kabasa</h2>
+                            <p>Kabasa adalah website manajemen sekolah yang dirancang untuk memudahkan pengelolaan
                                 sekolah. Website ini dilengkapi dengan fitur-fitur seperti absensi, jurnal mengajar, jurnal
                                 staff, pelanggaran dan perbaikan, tanggapan siswa, serta buku tamu.</p>
                         </div>
@@ -263,9 +263,9 @@
     <!-- Interface overview-Section start -->
     <section class="row_am interface_section mb-5 pb-5">
         <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
-            <h2>Preview Fitur MISCHOOL</h2>
+            <h2>Preview Fitur KABASA</h2>
             <p>
-                Berikut beberapa preview dari website Mischool, mulai dari halaman untuk sekolah, guru, staff, hingga siswa.
+                Berikut beberapa preview dari website Kabasa, mulai dari halaman untuk sekolah, guru, staff, hingga siswa.
             </p>
         </div>
         <!-- screen slider start -->
@@ -337,9 +337,9 @@
             <div class="container">
                 <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
                     <!-- h2 -->
-                    <h2>Pengguna MISCHOOL</h2>
+                    <h2>Pengguna KABASA</h2>
                     <!-- p -->
-                    <p>Mischool hadir sebagai solusi manajemen sekolah yang inovatif, mendukung berbagai aktivitas dan
+                    <p>Kabasa hadir sebagai solusi manajemen sekolah yang inovatif, mendukung berbagai aktivitas dan
                         proses dalam lingkungan pendidikan.</p>
                 </div>
                 <div class="features_inner" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="100">
@@ -405,8 +405,8 @@
                 <!-- container start -->
                 <div class="container">
                     <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
-                        <h2>Mitra Mischool</h2>
-                        <p>Daftar - daftar sekolah yang telah bekerja sama dan menggunakan Mischool untuk management sekolah
+                        <h2>Mitra Kabasa</h2>
+                        <p>Daftar - daftar sekolah yang telah bekerja sama dan menggunakan Kabasa untuk management sekolah
                         </p>
                     </div>
                     <!-- logos slider start -->
@@ -573,7 +573,7 @@
             <div class="container">
                 <div class="section_title" data-aos="fade-in" data-aos-duration="1500" data-aos-delay="100">
                     <h2>Berita Terbaru</h2>
-                    <p>Berita berita terbaru yang menyediakan tentang informasi kerja sama Mischool antar sekolah</p>
+                    <p>Berita berita terbaru yang menyediakan tentang informasi kerja sama Kabasa antar sekolah</p>
                 </div>
                 <!-- row start -->
                 <div class="row">

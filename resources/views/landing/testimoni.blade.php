@@ -55,8 +55,8 @@
     <!-- container start -->
     <div class="container">
         <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
-            <h2>Mitra Mischool</h2>
-            <p>Daftar - daftar sekolah yang telah bekerja sama dan menggunakan Mischool untuk management sekolah</p>
+            <h2>Mitra Kabasa</h2>
+            <p>Daftar - daftar sekolah yang telah bekerja sama dan menggunakan Kabasa untuk management sekolah</p>
         </div>
         <!-- logos slider start -->
         <div class="company_logos" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo/logo-M.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('landing_assets/images/logo/smkn-babussalam.png') }}" />
     <!-- Owl Carousel  -->
     <link rel="stylesheet" href="{{ asset('admin_assets/dist/libs/owl.carousel/dist/owl.carousel.min.js') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
-    <title>MiSchool | Absensi</title>
+    <title>Kabasa | Absensi</title>
     <style>
         .nav-pills .nav-link {
             background-color: #ffffff;
@@ -42,7 +42,7 @@
     <div class="p-5">
         <div class="d-flex justify-content-between">
             <div>
-                <img src="{{ asset('assets/images/logo/logo-miscool.png') }}" width="200px" alt="">
+                <img src="{{ asset('landing_assets/images/logo/kabasa.png') }}" width="200px" alt="">
             </div>
 
             <div class="d-flex align-items-center">

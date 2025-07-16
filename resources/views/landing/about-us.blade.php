@@ -56,9 +56,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="section_title" data-aos="fade-in" data-aos-duration="1500">
-                            <h1 class="text-primary">Tentang Mischool</h1>
-                            <p>Mischool adalah website manajemen sekolah yang dirancang untuk memudahkan pengelolaan sekolah. Website ini dilengkapi dengan fitur-fitur seperti absensi, jurnal mengajar, jurnal staff, pelanggaran dan perbaikan, tanggapan siswa, serta buku tamu.</p>
-                            <p>Terdapat empat peran pengguna di dalam mischool, yaitu admin sekolah, guru, staf dan siswa. Pada setiap peran memiliki fitur dan hak akses yang berbeda-beda.</p>
+                            <h1 class="text-primary">Tentang Kabasa</h1>
+                            <p>Kabasa adalah website manajemen sekolah yang dirancang untuk memudahkan pengelolaan sekolah. Website ini dilengkapi dengan fitur-fitur seperti absensi, jurnal mengajar, jurnal staff, pelanggaran dan perbaikan, tanggapan siswa, serta buku tamu.</p>
+                            <p>Terdapat empat peran pengguna di dalam kabasa, yaitu admin sekolah, guru, staf dan siswa. Pada setiap peran memiliki fitur dan hak akses yang berbeda-beda.</p>
                         </div>
                     </div>
                     <!-- image -->
@@ -77,7 +77,7 @@
                             <div class="counter_box">
                                 <p><span class="counter-value" data-count="4">0</span><span>+</span></p>
                                 <p style="font-size: 20px">Sekolah</p>
-                                <p style="font-size: 14px">Beberapa sekolah telah bergabung dengan MiSchool, memanfaatkan platform kami untuk memanajemen informasi dan data sekolah</p>
+                                <p style="font-size: 14px">Beberapa sekolah telah bergabung dengan Kabasa, memanfaatkan platform kami untuk memanajemen informasi dan data sekolah</p>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <div class="counter_box">
                                 <p><span class="counter-value" data-count="98">0</span><span>+</span></p>
                                 <p style="font-size: 20px">Guru</p>
-                                <p style="font-size: 14px">Dengan lebih dari 98 guru yang aktif menggunakan MiSchool, platform kami membantu mempermudah proses presensi siswa di setiap kelas.</p>
+                                <p style="font-size: 14px">Dengan lebih dari 98 guru yang aktif menggunakan Kabasa, platform kami membantu mempermudah proses presensi siswa di setiap kelas.</p>
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                             <div class="counter_box">
                                 <p><span class="counter-value" data-count="1021">0</span><span>+</span></p>
                                 <p style="font-size: 20px">Siswa</p>
-                                <p style="font-size: 14px">MiSchool mendukung lebih dari 1021 siswa di seluruh sekolah yang bekerja sama, memberikan kebebasan kepada siswa untuk memberikan tanggapan kepada guru.</p>
+                                <p style="font-size: 14px">Kabasa mendukung lebih dari 1021 siswa di seluruh sekolah yang bekerja sama, memberikan kebebasan kepada siswa untuk memberikan tanggapan kepada guru.</p>
                             </div>
                         </div>
                     </div>
@@ -117,8 +117,8 @@
                 <div class="col-md-6">
                     <div class="sl_two_colom_text" data-aos="fade-in" data-aos-duration="2000" data-aos-delay="100">
                         <div class="section_title">
-                            <h2>Kenapa Memilih Mischool </h2>
-                            <p>Berikut beberapa alasan anda memilih Mischool untuk mengelola sekolah Anda.</p>
+                            <h2>Kenapa Memilih Kabasa </h2>
+                            <p>Berikut beberapa alasan anda memilih Kabasa untuk mengelola sekolah Anda.</p>
                         </div>
 
                         <div class="service_list_point">

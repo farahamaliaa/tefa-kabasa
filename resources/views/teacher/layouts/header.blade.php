@@ -16,8 +16,8 @@
             </div>
         </ul>
         <div class="d-block d-lg-none">
-            <img src="{{ asset('assets/images/logo/logo-miscool.png') }}" class="dark-logo img-fluid" width="140" alt="" />
-            <img src="{{ asset('assets/images/logo/logo-miscool.png') }}" class="light-logo img-fluid" width="140" alt="" />
+            <img src="{{ asset('landing_assets/images/logo/kabasa.png') }}" class="dark-logo img-fluid" width="140" alt="" />
+            <img src="{{ asset('landing_assets/images/logo/kabasa.png') }}" class="light-logo img-fluid" width="140" alt="" />
         </div>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -124,7 +124,7 @@
                     </div>
                     {{-- <div class="message-body">
                         <a class="py-8 px-7 mt-8 d-flex align-items-center"
-                            href="{{ asset('assets/images/logo/logo-M.png') }}">
+                            href="{{ asset('landing_assets/images/logo/smkn-babussalam.png') }}">
                             <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                                 <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-account.svg"
                                     alt="" width="24" height="24">

@@ -5,7 +5,7 @@
 
 <head>
     <!--  Title -->
-    <title>MiSchool | Teacher</title>
+    <title>Kabasa | Teacher</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,7 +16,7 @@
     <meta name="keywords" content="Mordenize" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo/logo-M.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('landing_assets/images/logo/smkn-babussalam.png') }}" />
     <!-- Owl Carousel  -->
     <link rel="stylesheet" href="{{ asset('admin_assets/dist/libs/owl.carousel/dist/owl.carousel.min.js') }}">
 
@@ -36,11 +36,11 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('assets/images/logo/logo-M.png') }}" style="width:100px" alt="loader" class="lds-ripple" />
+        <img src="{{ asset('landing_assets/images/logo/smkn-babussalam.png') }}" style="width:100px" alt="loader" class="lds-ripple" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('assets/images/logo/logo-M.png') }}" style="width:100px" alt="loader" class="lds-ripple" />
+        <img src="{{ asset('landing_assets/images/logo/smkn-babussalam.png') }}" style="width:100px" alt="loader" class="lds-ripple" />
     </div>
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme" data-layout="vertical" data-sidebartype="full"

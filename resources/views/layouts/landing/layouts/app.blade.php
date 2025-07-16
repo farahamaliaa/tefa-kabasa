@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiSchool</title>
+    <title>Kabasa</title>
 
     <!-- icofont-css-link -->
     <link rel="stylesheet" href="{{ asset('landing_assets/css/icofont.min.css') }}">
@@ -23,7 +23,7 @@
     <!-- Responsive-Style-link -->
     <link rel="stylesheet" href="{{ asset('landing_assets/css/responsive.css') }}">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/logo/logo-M.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('landing_assets/images/logo/smkn-babussalam.png') }}" type="image/x-icon">
 
     @yield('style')
 

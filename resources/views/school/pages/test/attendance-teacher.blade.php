@@ -43,7 +43,7 @@
             <div class="card w-100 full-height rounded" style="background-color: #F5F5F5; overflow: hidden;">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div>
-                        <img src="{{ asset('assets/images/logo/logo-miscool.png') }}" style="width:150px"
+                        <img src="{{ asset('landing_assets/images/logo/kabasa.png') }}" style="width:150px"
                             alt="Logo" />
                         <h4 class="mt-3 text-muted">untuk memasuki halaman absensi anda membutuhkan master card</h4>
                     </div>

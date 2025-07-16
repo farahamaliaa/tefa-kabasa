@@ -81,8 +81,8 @@
         <div class="container">
             <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
                 <h2>Fitur - Fitur </h2>
-                <p>Mischool dilengkapi dengan fitur - fitur penting untuk management sekolah, dibawah ini adalah fitur -
-                    fitur dari Mischool</p>
+                <p>Kabasa dilengkapi dengan fitur - fitur penting untuk management sekolah, dibawah ini adalah fitur -
+                    fitur dari Kabasa</p>
             </div>
             <div class="container mt-5">
                 <div class="row">
@@ -153,8 +153,8 @@
         <div class="container">
             <div class="section_title px-5 text-center" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
                 <div>
-                    <h2>Paket Fitur MISCHOOL</h2>
-                    <p class="mx-0 mx-md-5">Lihat berbagai paket harga yang ditawarkan oleh Mischool dan temukan yang
+                    <h2>Paket Fitur KABASA</h2>
+                    <p class="mx-0 mx-md-5">Lihat berbagai paket harga yang ditawarkan oleh Kabasa dan temukan yang
                         paling sesuai dengan kebutuhan sekolah Anda di bagian Pricing List.
                     </p>
                 </div>
