@@ -37,11 +37,18 @@
                 Import Siswa
             </a>
         </div>
-
-
-
     </div>
 
+    @if (session('error_rows'))
+        <div class="alert alert-danger">
+            <strong>Terjadi kesalahan pada baris berikut:</strong>
+            <ul>
+                @foreach (session('error_rows') as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div class="table-responsive rounded-2 mb-4">
         <table class="table border text-nowrap customize-table mb-0 align-middle">

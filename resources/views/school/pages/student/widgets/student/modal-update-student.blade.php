@@ -138,7 +138,7 @@
                             <div class="form-floating mb-3">
                                 <div class="form-group">
                                     <label for="number_akta-edit" class="mb-2">Nomor Akta<span class="text-danger">*</span></label>
-                                    <input type="number" name="number_akta" id="number_akta-edit" placeholder="Masukkan nomer akta" class="form-control" value="{{ old('number_akta') }}">
+                                    <input type="text" name="number_akta" id="number_akta-edit" placeholder="Masukkan nomer akta" class="form-control" value="{{ old('number_akta') }}">
                                     @error('number_akta')
                                     <strong class="text-danger">{{ $message }}</strong>
                                     @enderror

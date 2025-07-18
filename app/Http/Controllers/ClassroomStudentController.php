@@ -149,7 +149,11 @@ class ClassroomStudentController extends Controller
 
         DB::beginTransaction();
         try {
-            Excel::import(new ClassStudentImport, $file);
+            $import = new ClassStudentImport;
+            Excel::import($import, $file);
+            if (!empty($import->errors)) {
+                return back()->with('error_rows', $import->errors);
+            }
             DB::commit();
             return to_route('school.students.index')->with('success', "Berhasil Mengimport Data!");
         } catch (\Throwable $th) {

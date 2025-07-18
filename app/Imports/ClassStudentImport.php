@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Hash;
 class ClassStudentImport implements ToModel, WithHeadingRow, WithEvents
 {
     protected $sheetName;
+    public $errors = [];
 
     public function model(array $row)
     {
@@ -43,6 +44,44 @@ class ClassStudentImport implements ToModel, WithHeadingRow, WithEvents
                     return null;
                 }
             } else {
+                if ($row['email'] == null) {
+                    $this->errors[] = "Email kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['nisn'] == null) {
+                    $this->errors[] = "NISN kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['tanggal_lahir'] == null) {
+                    $this->errors[] = "Tanggal lahir kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['tempat_lahir'] == null) {
+                    $this->errors[] = "Tempat lahir kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['jenis_kelamin'] == null) {
+                    $this->errors[] = "Jenis kelamin kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['nik'] == null) {
+                    $this->errors[] = "NIK kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['no_kk'] == null) {
+                    $this->errors[] = "No KK kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['no_akta'] == null) {
+                    $this->errors[] = "No Akta kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['alamat'] == null) {
+                    $this->errors[] = "Alamat kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['anak_ke'] == null) {
+                    $this->errors[] = "Anak ke kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['jumlah_saudara'] == null) {
+                    $this->errors[] = "Jumlah saudara kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                } else if ($row['agama'] == null) {
+                    $this->errors[] = "Agama kosong untuk {$row['nama']}, silahkan isi terlebih dahulu";
+                    return null;
+                }
+
                 $user = User::create([
                     'name' => $row['nama'] ?? null,
                     'email' => $row['email'],
