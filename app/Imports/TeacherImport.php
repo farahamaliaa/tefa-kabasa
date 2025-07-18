@@ -22,7 +22,6 @@ class TeacherImport implements ToModel
             return null;
         }
 
-        // dd($row);
         $user = User::where('email', $row[1])->first();
 
         if ($user) {
