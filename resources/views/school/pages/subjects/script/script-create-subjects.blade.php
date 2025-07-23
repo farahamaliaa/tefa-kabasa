@@ -5,9 +5,12 @@
         var religion = $(this).data('religion');
         $('#form-edit').attr('action', '{{ route('school.subject.update', '') }}/' + id);
         $('#name-edit').val(name);
-        $('#religion-edit').val(religion).trigger('change');
-        religion == '' ? $('#check').prop('checked', false) : $('#check').prop('checked', true);
-        religion == '' ? $('#religion-edit').hide() : $('#religion-edit').show();
+
+        if (religion != '') {
+            $('#category-edit').val('keagamaan');
+            $('#religion-field-edit').show();
+            $('#religion-edit').val(religion).trigger('change');
+        }
         $('#modal-edit').modal('show');
     });
 

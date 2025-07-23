@@ -12,7 +12,7 @@
                     <div class="mb-3">
                         <label for="">Mata Pelajaran <span class="text-danger">*</span></label>
                         <input type="text" id="name-edit" name="name" class="form-control"
-                            placeholder="Masukan nama mata pelajaran">
+                            placeholder="Masukan nama mata pelajaran" value="{{ old('name') }}">
                         @error('name', 'update')
                             <div class="text-danger error-edit">
                                 <small>{{ $message }}</small>
@@ -23,17 +23,20 @@
                     <div class="mb-3">
                         <label class="mb-2" for="category">Kategori<span class="text-danger ms-1">*</span></label>
                         <select id="category-edit" name="category" class="form-select mb-3">
-                            <option value="umum">Umum</option>
-                            <option value="keagamaan">Keagamaan</option>
+                            <option value="umum" {{ old('category') == 'umum' ? 'selected' : '' }}>Umum</option>
+                            <option value="keagamaan" {{ old('category') == 'keagamaan' ? 'selected' : '' }}>Keagamaan</option>
                         </select>
                     </div>
 
                     <div id="religion-field-edit" class="mb-3" style="display: none;"> <label class="mb-2"
                             for="category">Agama<span class="text-danger ms-1"></span></label>
-                        <select id="religion-field-edit" name="religion_id" class="form-select form-select mb-3">
+                        <select id="religion-edit" name="religion_id" class="form-select form-select mb-3">
                             <option value="">Pilih agama <span class="text-danger"></span></option>
                             @foreach ($religions as $religion)
-                                <option value="{{ $religion->id }}">{{ $religion->name }}</option>
+                                <option value="{{ $religion->id }}"
+                                    {{ old('religion_id') == $religion->id ? 'selected' : '' }}>
+                                    {{ $religion->name }}
+                                </option>       
                             @endforeach
                         </select>
                     </div>

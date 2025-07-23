@@ -22,7 +22,7 @@ class StoreSubjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:subjects,name,except,id',
+            'name' => 'required|unique:subjects,name',
             'religion_id' => 'nullable',
         ];
     }

@@ -22,7 +22,7 @@ class UpdateSubjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:subjects,name,'.$this->subject->id,
             'religion_id' => 'nullable',
         ];
     }
@@ -42,7 +42,13 @@ class UpdateSubjectRequest extends FormRequest
 
     protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
-        session()->flash('showUpdateSubject', true);
-        throw new \Illuminate\Validation\ValidationException($validator, redirect()->back()->withErrors($validator, 'update'));
+        throw new \Illuminate\Validation\ValidationException(
+            $validator,
+            redirect()->back()
+                ->withErrors($validator, 'update')
+                ->withInput()
+                ->with('showUpdateSubject', true)
+                ->with('editId', $this->subject->id)
+        );
     }
 }
