@@ -72,7 +72,6 @@ class DashboardStaffController extends Controller
     {
         $students = $this->classroomStudent->get();
         $data = $this->attendance->getSickAndPermit($request, [AttendanceEnum::SICK->value, AttendanceEnum::PERMIT->value]);
-        dd($data);
         return view('staff.pages.permission.index', compact('data', 'students'));
     }
 
