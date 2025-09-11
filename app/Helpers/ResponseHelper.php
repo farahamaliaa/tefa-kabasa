@@ -48,7 +48,7 @@ class ResponseHelper
      * @param int $code
      * @return JsonResponse
      */
-    public static function success(mixed $data = null, string $message = null, int $code = Response::HTTP_OK): JsonResponse
+    public static function success(mixed $data = null, mixed $message = null, int $code = Response::HTTP_OK): JsonResponse
     {
         self::$response['meta']['message'] = $message;
         self::$response['meta']['code'] = $code;
