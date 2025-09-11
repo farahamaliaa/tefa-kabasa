@@ -5,7 +5,6 @@
         tabs.forEach(function(tab) {
             tab.addEventListener('shown.bs.tab', function(event) {
                 localStorage.setItem('activeTab', event.target.getAttribute('href'));
-                updateButtonVisibility();
             });
         });
 
@@ -18,7 +17,5 @@
         } else {
             tabs[0].click();
         }
-
-        updateButtonVisibility();
     });
 </script>
