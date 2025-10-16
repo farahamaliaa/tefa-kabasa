@@ -45,11 +45,11 @@ class StudentAttendanceSheet implements FromCollection, WithTitle, WithStyles, S
 
         $data = collect([
             ['RINGKASAN KEHADIRAN'],
-            ['Hadir', $statusCounts['hadir'] ?? '0'],
-            ['Telat', $statusCounts['telat'] ?? '0'],
-            ['Sakit', $statusCounts['sakit'] ?? '0'],
-            ['Izin', $statusCounts['izin'] ?? '0'],
-            ['Alpha', $statusCounts['alpha'] ?? '0'],
+            ['Hadir', (string)($statusCounts['hadir'] ?? '0')],
+            ['Telat', (string)($statusCounts['telat'] ?? '0')],
+            ['Sakit', (string)($statusCounts['sakit'] ?? '0')],
+            ['Izin', (string)($statusCounts['izin'] ?? '0')],
+            ['Alpha', (string)($statusCounts['alpha'] ?? '0')],
             [''],
             ['DETAIL KEHADIRAN'],
             ['No', 'Tanggal', 'Nama', 'Kelas', 'Keterangan', 'Masuk', 'Pulang', 'Poin']
