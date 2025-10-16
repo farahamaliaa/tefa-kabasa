@@ -3,64 +3,40 @@
 namespace App\Exports;
 
 use App\Contracts\Interfaces\AttendanceInterface;
-use App\Models\Attendance;
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithStyles;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use PhpOffice\PhpSpreadsheet\Style\Alignment;
-use PhpOffice\PhpSpreadsheet\Style\Border;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
+use App\Contracts\Interfaces\ClassroomStudentInterface;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class StudentAttendanceExport implements FromView, ShouldAutoSize, WithStyles
+class StudentAttendanceExport implements WithMultipleSheets
 {
-    protected $classroom_id;
-    private AttendanceInterface $attendance;
-    private Request $request;
+    protected Classroom $classroom;
+    protected Request $request;
+    protected AttendanceInterface $attendance;
+    protected ClassroomStudentInterface $classroomStudent;
 
-    public function __construct($classroom_id, Request $request, AttendanceInterface $attendance)
+    public function __construct(Classroom $classroom, Request $request, AttendanceInterface $attendance, ClassroomStudentInterface $classroomStudent)
     {
-        $this->classroom_id = $classroom_id;
+        $this->classroom = $classroom;
         $this->attendance = $attendance;
         $this->request = $request;
+        $this->classroomStudent = $classroomStudent;
     }
 
     /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function view(): View
+     * @return array
+     */
+    public function sheets(): array
     {
-        return view('school.export.invoices-attendance-student', [
-            'items' => $this->attendance->exportClassAndDate($this->classroom_id, $this->request)
-        ]);
-    }
+        $sheets = [];
+        
+        $classroomStudents = $this->classroomStudent->whereClassroom($this->classroom->id, $this->request);
 
-    public function styles(Worksheet $sheet)
-    {
-        $highestRow = $sheet->getHighestRow();
-        $highestColumn = $sheet->getHighestColumn();
+        $sheets[] = new ClassroomAttendanceSheet($classroomStudents, $this->classroom, $this->request, $this->attendance, $this->classroomStudent);
+        foreach ($classroomStudents as $classroomStudent) {
+            $sheets[] = new StudentAttendanceSheet($classroomStudent, $this->request, $this->attendance);
+        }
 
-        $sheet->getStyle("A1:{$highestColumn}{$highestRow}")->getAlignment()
-            ->setHorizontal(Alignment::HORIZONTAL_CENTER)
-            ->setVertical(Alignment::VERTICAL_CENTER);
-
-        $sheet->getStyle("A1:{$highestColumn}{$highestRow}")->applyFromArray([
-            'borders' => [
-                'allBorders' => [
-                    'borderStyle' => Border::BORDER_THIN,
-                    'color' => ['argb' => '000000'],
-                ],
-            ],
-        ]);
-
-        $headerRange = "A1:{$highestColumn}1"; // Sesuaikan dengan rentang header
-        $sheet->getStyle($headerRange)->applyFromArray([
-            'fill' => [
-                'fillType' => Fill::FILL_SOLID,
-                'color' => ['argb' => 'FFFF00'], // Warna background kuning
-            ],
-        ]);
+        return $sheets;
     }
 }

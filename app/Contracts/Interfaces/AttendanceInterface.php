@@ -9,6 +9,7 @@ use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 use App\Contracts\Interfaces\Eloquent\WhereSchoolInterface;
+use App\Models\ClassroomStudent;
 use Illuminate\Http\Request;
 
 interface AttendanceInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface, PaginateInterface
@@ -41,4 +42,5 @@ interface AttendanceInterface extends GetInterface, StoreInterface, UpdateInterf
     public function whereClassroomCount(mixed $id, mixed $day, mixed $status): mixed;
     public function getSickAndPermit(Request $request, array $status) : mixed;
     public function allStudentWithPagination(Request $request): mixed;
+    public function countAttendanceByClassroomStudentWithRange(ClassroomStudent $classroomStudent, Request $request): mixed;
 }

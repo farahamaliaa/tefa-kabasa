@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Schools;
 use App\Contracts\Interfaces\AttendanceInterface;
 use App\Contracts\Interfaces\AttendanceTeacherInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
+use App\Contracts\Interfaces\ClassroomStudentInterface;
 use App\Contracts\Interfaces\SchoolYearInterface;
 use App\Exports\StudentAttendanceExport;
+use App\Exports\StudentAttendanceSheet;
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
 use App\Models\Classroom;
@@ -22,14 +24,16 @@ class AttendanceController extends Controller
     private AttendanceInterface $attendance;
     private AttendanceTeacherInterface $attendanceTeacher;
     private AttendanceService $attendanceService;
+    private ClassroomStudentInterface $classroomStudent;
 
-    public function __construct(classroomInterface $classroom, SchoolYearInterface $schoolYear, AttendanceInterface $attendance, AttendanceTeacherInterface $attendanceTeacher, AttendanceService $attendanceService)
+    public function __construct(classroomInterface $classroom, SchoolYearInterface $schoolYear, AttendanceInterface $attendance, AttendanceTeacherInterface $attendanceTeacher, AttendanceService $attendanceService, ClassroomStudentInterface $classroomStudent)
     {
         $this->classroom = $classroom;
         $this->schoolYear = $schoolYear;
         $this->attendance = $attendance;
         $this->attendanceTeacher = $attendanceTeacher;
         $this->attendanceService = $attendanceService;
+        $this->classroomStudent = $classroomStudent;
     }
 
     /**
@@ -86,7 +90,7 @@ class AttendanceController extends Controller
      */
     public function export_student(Classroom $classroom, Request $request)
     {
-        return Excel::download(new StudentAttendanceExport($classroom->id, $request, $this->attendance), 'Kehadiran-'.$classroom->name.$request->date.'.xlsx');
+        return Excel::download(new StudentAttendanceExport($classroom->id, $request, $this->attendance, $this->classroomStudent), 'Kehadiran-'.$classroom->name.$request->date.'.xlsx');
     }
 
     public function proof(Attendance $attendance, Request $request)

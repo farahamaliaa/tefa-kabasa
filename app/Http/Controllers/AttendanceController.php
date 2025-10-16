@@ -3,21 +3,14 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\School;
 use App\Enums\RoleEnum;
 use App\Models\Classroom;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseHelper;
-use App\Models\ClassroomStudent;
-use App\Exports\AttendanceExport;
 use App\Services\AttendanceService;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\StudentAttendanceExport;
-use App\Exports\TeacherAttendanceExport;
-use App\Http\Requests\StoreAttendanceRequest;
 use App\Contracts\Interfaces\StudentInterface;
-use App\Http\Requests\UpdateAttendanceRequest;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\AttendanceInterface;
 use App\Contracts\Interfaces\SchoolYearInterface;
@@ -26,10 +19,8 @@ use App\Contracts\Interfaces\AttendanceRuleInterface;
 use App\Contracts\Interfaces\ClassroomStudentInterface;
 use App\Contracts\Interfaces\AttendanceTeacherInterface;
 use App\Contracts\Repositories\AttendanceTeacherRepository;
-use App\Enums\AttendanceEnum;
+use App\Exports\StudentAttendanceSheet;
 use App\Http\Requests\AttendanceLicensesRequest;
-use App\Models\AttendanceTeacher;
-use App\Models\Employee;
 
 class AttendanceController extends Controller
 {
@@ -131,7 +122,7 @@ class AttendanceController extends Controller
 
     public function export_student(Classroom $classroom, Request $request)
     {
-        return Excel::download(new StudentAttendanceExport($classroom->id, $request, $this->attendance), 'Kehadiran-siswa-' . $classroom->name . '.xlsx');
+        return Excel::download(new StudentAttendanceSheet($classroom->id, $request, $this->attendance), 'Kehadiran-siswa-' . $classroom->name . '.xlsx');
     }
 
     /**

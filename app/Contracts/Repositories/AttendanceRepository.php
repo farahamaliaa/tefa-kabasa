@@ -6,8 +6,10 @@ use App\Contracts\Interfaces\AttendanceInterface;
 use App\Enums\AttendanceEnum;
 use App\Enums\RoleEnum;
 use App\Models\Attendance;
+use App\Models\Classroom;
 use App\Models\ClassroomStudent;
 use App\Models\Employee;
+use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -145,6 +147,25 @@ class AttendanceRepository extends BaseRepository implements AttendanceInterface
                 $query->whereBetween('created_at', [$request->start . ' 00:00:00', $request->end . ' 23:59:59']);
             })
             ->get();
+    }
+
+    public function countAttendanceByClassroomStudentWithRange(ClassroomStudent $classroomStudent, Request $request): mixed
+    {
+        $attendances = $this->model->query()
+            ->with('model')->where('model_type', ClassroomStudent::class)
+            ->whereHas('model', function($query) use ($classroomStudent) {
+                $query->where('id', $classroomStudent->id);
+            })->when($request->start, function ($query) use ($request) {
+                $query->whereBetween('created_at', [$request->start . ' 00:00:00', $request->end . ' 23:59:59']);
+            })->get();
+
+        $counts = collect(AttendanceEnum::cases())
+        ->mapWithKeys(fn($case) => [$case->value => 0])
+        ->merge(
+            $attendances->groupBy(fn($a) => $a->status->value)->map->count()
+        );
+    
+        return $counts;
     }
 
     public function attendanceGetTecaher(Request $request): mixed
