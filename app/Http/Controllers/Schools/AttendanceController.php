@@ -90,7 +90,7 @@ class AttendanceController extends Controller
      */
     public function export_student(Classroom $classroom, Request $request)
     {
-        return Excel::download(new StudentAttendanceExport($classroom->id, $request, $this->attendance, $this->classroomStudent), 'Kehadiran-'.$classroom->name.$request->date.'.xlsx');
+        return Excel::download(new StudentAttendanceExport($classroom, $request, $this->attendance, $this->classroomStudent), 'Kehadiran-'.$classroom->name.$request->date.'.xlsx');
     }
 
     public function proof(Attendance $attendance, Request $request)
