@@ -124,11 +124,13 @@ class LessonScheduleRepository extends BaseRepository implements LessonScheduleI
     public function export(Request $request): mixed
     {
         return $this->model->query()
-            ->when($request->start, function ($q) use ($request) {
-                $q->whereBetween('created_at', [$request->start . ' 00:00:00', $request->end . ' 23:59:59']);
-            })
-            ->when($request->classroom, function ($q) use ($request) {
-                $q->where('classroom_id', $request->classroom);
+            ->whereHas('teacherJournals', function ($query) use ($request) {
+                $query->when($request->start, function ($q) use ($request) {
+                    $q->whereBetween('created_at', [$request->start . ' 00:00:00', $request->end . ' 23:59:59']);
+                })
+                ->when($request->classroom, function ($q) use ($request) {
+                    $q->where('classroom_id', $request->classroom);
+                });
             })
             ->when($request->subject, function ($q) use ($request) {
                 $q->whereHas('teacherSubject', function ($query) use ($request) {
