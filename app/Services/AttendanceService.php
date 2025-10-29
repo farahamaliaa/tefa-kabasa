@@ -119,6 +119,7 @@ class AttendanceService
                             'model_id' => $rfid->model->classroomStudents->first()->id,
                             'model_type' => "App\Models\ClassroomStudent",
                             'status' => AttendanceEnum::PRESENT->value,
+                            'point' => 10,
                             'checkin' => $time->toDateTimeString(),
                             'created_at' => $date
                         ];
