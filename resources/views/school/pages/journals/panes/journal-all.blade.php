@@ -23,7 +23,6 @@
                         <th>Tanggal</th>
                         <th>Kelas</th>
                         <th>Status</th>
-                        <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -33,14 +32,14 @@
                             <td>{{ $loop->iteration }}</td>
                             <td class="text-start">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ $all_journal->teacherSubject->employee->image ? asset('storage/' . $all_journal->teacherSubject->employee->image) : asset('admin_assets/dist/images/profile/user-10.jpg') }}"
+                                    <img src="{{ $all_journal->teacherSubject->employee->image ? asset('storage/' . $all_journal->teacherSubject->employee->image) : asset('assets/images/default-user.jpeg') }}" onerror="this.onerror=null;this.src='{{ asset('assets/images/default-user.jpeg') }}';"
                                         class="rounded-circle me-2 user-profile" style="object-fit: cover"
                                         width="40" height="40" alt="" />
                                     <div class="ms-2">
                                         <h6 class="fs-4 fw-semibold mb-0 text-start">
                                             {{ $all_journal->teacherSubject->employee->user->name }}</h6>
-                                        <span
-                                            class="fw-normal">{{ $all_journal->teacherSubject->employee->user->modelHasRfid ? $all_journal->teacherSubject->employee->user->modelHasRfid->rfid : 'Tidak ada rfid' }}</span>
+                                        {{-- <span class="fw-normal">{{ $all_journal->teacherSubject->employee->user->modelHasRfid ? $all_journal->teacherSubject->employee->user->modelHasRfid->rfid : 'Tidak ada rfid' }}</span> --}}
+                                        <span class="fw-normal">{{ $all_journal->teacherSubject->employee->nip }}</span>
                                     </div>
                                 </div>
                             </td>
@@ -50,25 +49,24 @@
                             <td><span
                                     class="mb-1 badge font-medium {{ $all_journal->teacherJournals->first() ? 'bg-light-success text-success' : 'bg-light-danger text-danger' }}">{{ $all_journal->teacherJournals->first() ? 'Mengisi' : 'Tidak Mengisi' }}</span>
                             </td>
-                            <td>{{ $all_journal->teacherJournals->first() ? \Illuminate\Support\Str::limit($all_journal->teacherJournals->first()->description, 50) : 'kosong..' }}
-                            </td>
                             </td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center align-items-center gap-2">
-                                    <a type="button" class="text-primari btn-detail-journal"
-                                        data-author="{{ $all_journal->teacherSubject->employee->user->name }}"
-                                        data-date="{{ \Carbon\Carbon::parse($all_journal->created_at)->translatedFormat('d F Y') }}"
-                                        data-description="{{ $all_journal->teacherJournals->first() ? $all_journal->teacherJournals->first()->description : 'kosong...' }}"
-                                        data-classroom="{{ $all_journal->classroom->name }} - {{ $all_journal->teacherSubject->subject->name }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 24 24">
-                                            <g fill="none" stroke="currentColor" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="1.5">
-                                                <path d="M3 13c3.6-8 14.4-8 18 0" />
-                                                <path d="M12 17a3 3 0 1 1 0-6a3 3 0 0 1 0 6" />
-                                            </g>
-                                        </svg>
-                                    </a>
+                                    @if ($all_journal->teacherJournals->first())
+                                        <a href="{{ route('school.journals.show', $all_journal->teacherJournals->first()->id) }}"
+                                            type="button" class="text-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 24 24">
+                                                <g fill="none" stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="1.5">
+                                                    <path d="M3 13c3.6-8 14.4-8 18 0" />
+                                                    <path d="M12 17a3 3 0 1 1 0-6a3 3 0 0 1 0 6" />
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    @else
+                                        <span>-</span>                  
+                                    @endif
                                 </div>
                             </td>
                         </tr>

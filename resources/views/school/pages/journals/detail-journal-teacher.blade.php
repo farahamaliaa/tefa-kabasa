@@ -2,22 +2,14 @@
     use Carbon\Carbon;
     use App\Enums\AttendanceEnum;
 @endphp
-@extends('teacher.layouts.app')
-
+@extends('school.layouts.app')
 @section('content')
     <div class="card bg-primary shadow-none position-relative overflow-hidden mb-4">
-        <div class="card-body px-4 py-4">
+        <div class="card-body px-4 py-2">
             <div class="d-flex justify-content-between">
                 <div class="row align-items-center">
                     <div class="col-12">
-                        <h4 class="fw-semibold mb-8 text-white">Jurnal Guru</h4>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item text-white fs-3" aria-current="page">
-                                    {{ $journal->lessonSchedule->teacherSubject->subject->name }} -
-                                    {{ $journal->lessonSchedule->classroom->name }}</li>
-                            </ol>
-                        </nav>
+                        <h4 class="fw-semibold mb-8 text-white">Detail Jurnal Guru</h4>
                     </div>
                 </div>
                 <div class="col-3">
@@ -52,54 +44,32 @@
                             <path fill="currentColor"
                                 d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 16H5V10h14zm0-12H5V6h14zm-7 5h5v5h-5z" />
                         </svg>
-                        <h6 class="mt-2 ms-3 me-2 text-primary">{{ $journal->created_at->isoFormat('DD MMM YYYY') }}</h6>
+                        <h6 class="mt-2 ms-3 me-2 text-primary">{{ $teacherJournal->created_at->isoFormat('DD MMM YYYY') }}</h6>
                     </div>
                 </div>
+                <a href="{{ route('school.journals.detail') }}" class="btn btn-warning ms-2">Kembali</a>
             </div>
         </div>
     </div>
 
-    {{-- <div class="card bg-light-primary shadow-none position-relative overflow-hidden rounded-top-0">
-        <div class="card-body px-1 py-0">
-            <div class="card-body py-3">
-                <div class="d-flex gap-4">
-                    <div>
-                        <h4><b>Siswa Masuk</b></h4>
-                        <h5>89 Masuk</h5>
-                    </div>
-                    <div class="border-end border-dark"></div>
-                    <div>
-                        <h4><b>Siswa Izin</b></h4>
-                        <h5>89 Masuk</h5>
-                    </div>
-                    <div class="border-end border-dark"></div>
-                    <div>
-                        <h4><b>Siswa Sakit</b></h4>
-                        <h5>89 Masuk</h5>
-                    </div>
-                    <div class="border-end border-dark"></div>
-                    <div>
-                        <h4><b>Siswa Alpha</b></h4>
-                        <h5>89 Masuk</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="card shadow">
         <div class="card-body pt-3">
+            {{-- @dd($teacherJournal->lessonSchedule->teacherSubject->subject->name) --}}
             <h4 class="pb-3">Laporan Kegiatan</h4>
+            <h5 class="badge bg-light-primary text-primary me-2"><b>Nama Guru:</b> {{ $teacherJournal->lessonSchedule->teacherSubject->employee->user->name }}</h5>
+            <h5 class="badge bg-light-success text-success me-2"><b>Kelas:</b> {{ $teacherJournal->lessonSchedule->classroom->name }}</h5>
+            <h5 class="badge bg-light-warning text-warning"><b>Mata Pelajaran:</b> {{ $teacherJournal->lessonSchedule->teacherSubject->subject->name }}</h5>
             <div class="form-group">
                 <h6 class="mt-4">Judul</h6>
                 <input type="text" class="form-control" id="nametext" aria-describedby="name"
-                    placeholder="Maling Rambutan" value="{{ $journal->title }}" disabled>
+                    placeholder="Maling Rambutan" value="{{ $teacherJournal->title }}" disabled>
             </div>
             <div class="form-group">
                 <h6 class="mt-4">Isi Laporan</h6>
                 <textarea class="form-control" rows="8"
                     placeholder="Pada pertemuan kali ini, ekstrakurikuler band berjalan dengan lancar. Latihan rutin diadakan setiap Selasa dan Kamis sore, dengan fokus pada teknik bermain musik dan kerjasama tim.
-Kegiatan ini memberikan banyak manfaat, termasuk peningkatan bakat musik, rasa percaya diri, disiplin, dan kerjasama. Kami optimis ekstrakurikuler band akan terus berkembang dan meraih prestasi di masa depan." disabled>{{ $journal->description }}</textarea>
+Kegiatan ini memberikan banyak manfaat, termasuk peningkatan bakat musik, rasa percaya diri, disiplin, dan kerjasama. Kami optimis ekstrakurikuler band akan terus berkembang dan meraih prestasi di masa depan."
+                    disabled>{{ $teacherJournal->description }}</textarea>
 
             </div>
         </div>
@@ -222,35 +192,35 @@ Kegiatan ini memberikan banyak manfaat, termasuk peningkatan bakat musik, rasa p
             </div>
         </div>
 
-        @include('teacher.pages.journals.widgets.detail')
-    @endsection
+    @include('teacher.pages.journals.widgets.detail')
+@endsection
 
-    @section('script')
-        <script>
-            const attendanceStudents = @json($attendanceJournals);
+@section('script')
+    <script>
+        const attendanceStudents = @json($attendanceJournals);
 
 
-            $('.btn-detail').click(function() {
-                let classroomStudent = attendanceStudents.find(attendanceStudent => attendanceStudent.id == $(this)
-                    .data('attendance')).classroom_student
+        $('.btn-detail').click(function() {
+            let classroomStudent = attendanceStudents.find(attendanceStudent => attendanceStudent.id == $(this)
+                .data('attendance')).classroom_student
 
-                $('#name-detail').text(classroomStudent.student.user.name)
-                $('#email-detail').text(classroomStudent.student.user.email)
-                $('#phone-detail').text(classroomStudent.student.phone)
-                $('#gender-detail').text(classroomStudent.student.gender)
-                $('#birth-date-detail').text(classroomStudent.student.birth_date)
-                $('#birth-place-detail').text(classroomStudent.student.birth_place)
-                $('#number-kk-detail').text(classroomStudent.student.number_kk)
-                $('#nik-detail').text(classroomStudent.student.nik)
-                $('#order-child-detail').text(classroomStudent.student.order_child)
-                $('#number-akta-detail').text(classroomStudent.student.number_akta)
-                $('#count-siblings-detail').text(classroomStudent.student.count_siblings)
-                $('#address-detail').text(classroomStudent.student.address)
-                $('#classroom-detail').text(classroomStudent.classroom.name)
-                $('#religion-detail').text(classroomStudent.student.religion_id)
-                $('#nisn-detail').text(classroomStudent.student.nisn)
+            $('#name-detail').text(classroomStudent.student.user.name)
+            $('#email-detail').text(classroomStudent.student.user.email)
+            $('#phone-detail').text(classroomStudent.student.phone)
+            $('#gender-detail').text(classroomStudent.student.gender)
+            $('#birth-date-detail').text(classroomStudent.student.birth_date)
+            $('#birth-place-detail').text(classroomStudent.student.birth_place)
+            $('#number-kk-detail').text(classroomStudent.student.number_kk)
+            $('#nik-detail').text(classroomStudent.student.nik)
+            $('#order-child-detail').text(classroomStudent.student.order_child)
+            $('#number-akta-detail').text(classroomStudent.student.number_akta)
+            $('#count-siblings-detail').text(classroomStudent.student.count_siblings)
+            $('#address-detail').text(classroomStudent.student.address)
+            $('#classroom-detail').text(classroomStudent.classroom.name)
+            $('#religion-detail').text(classroomStudent.student.religion_id)
+            $('#nisn-detail').text(classroomStudent.student.nisn)
 
-                $('#modal-detail').show('modal')
-            });
-        </script>
-    @endsection
+            $('#modal-detail').show('modal')
+        });
+    </script>
+@endsection

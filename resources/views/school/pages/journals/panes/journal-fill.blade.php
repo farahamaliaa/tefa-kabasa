@@ -22,7 +22,6 @@
                         <th>Tanggal</th>
                         <th>Kelas</th>
                         <th>Status</th>
-                        <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -32,21 +31,20 @@
                             <td>{{ $loop->iteration }}</td>
                             <td class="text-start">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ $fill_journal->teacherSubject->employee->image ? asset('storage/'. $fill_journal->teacherSubject->employee->image ) : asset('admin_assets/dist/images/profile/user-10.jpg') }}"
+                                    <img src="{{ $fill_journal->teacherSubject->employee->image ? asset('storage/' . $fill_journal->teacherSubject->employee->image) : asset('assets/images/default-user.jpeg') }}" onerror="this.onerror=null;this.src='{{ asset('assets/images/default-user.jpeg') }}';"
                                         class="rounded-circle me-2 user-profile" style="object-fit: cover" width="40"
                                         height="40" alt="" />
                                     <div class="ms-2">
                                         <h6 class="fs-4 fw-semibold mb-0 text-start">
                                             {{ $fill_journal->teacherSubject->employee->user->name }}</h6>
-                                        <span
-                                            class="fw-normal">{{$fill_journal->teacherSubject->employee->user->modelHasRfid ? $fill_journal->teacherSubject->employee->user->modelHasRfid->rfid : 'Tidak ada rfid'}}</span>
+                                        {{-- <span class="fw-normal">{{$fill_journal->teacherSubject->employee->user->modelHasRfid ? $fill_journal->teacherSubject->employee->user->modelHasRfid->rfid : 'Tidak ada rfid'}}</span> --}}
+                                        <span class="fw-normal">{{ $fill_journal->teacherSubject->employee->nip }}</span>
                                     </div>
                                 </div>
                             </td>
                             <td>{{ \Carbon\Carbon::parse($fill_journal->created_at)->translatedFormat('d F Y') }}</td>
                             <td>{{ $fill_journal->classroom->name }} - {{ $fill_journal->teacherSubject->subject->name }}</td>
                             <td><span class="mb-1 badge font-medium {{ $fill_journal->teacherJournals->first() ? 'bg-light-success text-success' : 'bg-light-danger text-danger' }}">{{ $fill_journal->teacherJournals->first() ? 'Mengisi' : 'Tidak Mengisi'  }}</span></td>
-                            <td>{{ $fill_journal->teacherJournals->first() ? \Illuminate\Support\Str::limit($fill_journal->teacherJournals->first()->description, 50) : 'Kosong..'}}</td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center align-items-center gap-2">
                                     <a type="button" class="text-primary btn-detail-journal"

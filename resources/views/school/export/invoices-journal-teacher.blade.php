@@ -14,12 +14,12 @@
         @forelse ($items as $item)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}</td>
+            <td>{{ $item->teacherJournals->first() ? \Carbon\Carbon::parse($item->teacherJournals->first()->created_at)->translatedFormat('d F Y') : 'tidak mengisi' }}</td>
             <td>{{ $item->teacherSubject->employee->user->name }}</td>
             <td>{{ $item->teacherSubject->employee->nip }}</td>
             <td>{{ $item->classroom->name }} - {{ $item->teacherSubject->subject->name }}</td>
-            <td>{{ $item->teacherJournals->first() ? $item->teacherJournals->first()->title : 'kosong...' }}</td>
-            <td>{{ $item->teacherJournals->first() ? $item->teacherJournals->first()->description : 'kosong...' }}</td>
+            <td>{{ $item->teacherJournals->first() ? $item->teacherJournals->first()->title : 'tidak mengisi' }}</td>
+            <td>{{ $item->teacherJournals->first() ? $item->teacherJournals->first()->description : 'tidak mengisi' }}</td>
         </tr>
         @empty
         @endforelse

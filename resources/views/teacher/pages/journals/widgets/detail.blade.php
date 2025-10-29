@@ -9,7 +9,7 @@
             <div class="modal-body text-center">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <img src="{{ asset('admin_assets/dist/images/profile/user-7.jpg') }}" id="image-detail" class="rounded-circle user-profile mb-3" style="object-fit: cover; width: 150px; height: 150px;" alt="User Profile Picture" />
+                        <img src="{{ asset('assets/images/default-user.jpeg') }}" id="image-detail" class="rounded-circle user-profile mb-3" style="object-fit: cover; width: 150px; height: 150px;" alt="User Profile Picture" />
                     </div>
                 </div>
                 <div class="row mt-3">

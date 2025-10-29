@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\LessonScheduleInterface;
 use App\Contracts\Interfaces\SubjectInterface;
 use App\Exports\TeacherJournalExport;
 use App\Http\Controllers\Controller;
+use App\Models\TeacherJournal;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -32,6 +33,12 @@ class JournalTeacherController extends Controller
         $fill_journals = $this->lessonSchedule->whereJournalTeacher('fill', $request);
         $notfill_journals = $this->lessonSchedule->whereJournalTeacher('notfill', $request);
         return view('school.pages.journals.index', compact('all_journals', 'fill_journals', 'notfill_journals'));
+    }
+
+    public function show(TeacherJournal $teacherJournal)
+    {
+        $attendanceJournals = $teacherJournal->attendanceJournals;
+        return view('school.pages.journals.detail-journal-teacher', compact('teacherJournal', 'attendanceJournals'));
     }
 
     public function export_preview(Request $request)
