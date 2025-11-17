@@ -103,7 +103,7 @@ class SchoolDashboardController extends Controller
 
         $studentChart = $this->schoolChart->chartStudentAttendance($lates, $totalPermit, $alpha);
 
-        return view('school.pages.dashboard.dashboard', compact(
+        return view('school.pages.dashboard.index', compact(
             'lates', 'alpha', 'sick', 'permit', 'totalPermit','lates_teacher', 'alpha_teacher', 'sick_teacher', 'totalPermit_teacher','studentChart',
             'fill','notfill','classrooms', 'violations',
             'schoolYear', 'semester',
